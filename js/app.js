@@ -48,6 +48,7 @@ const addToCart = (id, price) => {
 
    updateTaxAndCharge();
    document.getElementById('total-Products').innerText = count;
+   updateTotal()
 };
 
 const showProductDetails = (product_id) => {
@@ -67,7 +68,7 @@ const showProductDetailsInModal = (product_details) => {
 
 const getInputValue = (id) => {
    const element = document.getElementById(id).innerText;
-   const converted = parseInt(element);
+   const converted = parseFloat(element);
    return converted;
 };
 
@@ -81,7 +82,7 @@ const updatePrice = (id, value) => {
 
 // set innerText function
 const setInnerText = (id, value) => {
-   document.getElementById(id).innerText = Math.round(value);
+   document.getElementById(id).innerText = value.toFixed(2);
 };
 
 // update delivery charge and total Tax
@@ -107,7 +108,7 @@ const updateTotal = () => {
       getInputValue('price') +
       getInputValue('delivery-charge') +
       getInputValue('total-tax');
-   document.getElementById('total').innerText = grandTotal;
+   document.getElementById('total').innerText = grandTotal.toFixed(2);
 };
 
 // search by category
